@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Admins</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1>List Admins</h1>
+    </div>
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>Admin ID</th>
+                    <th>E-mail</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="admin : ${listAdmins}">
+                        <td th:text="${admin.id}">Admin Id</td>
+                        <td th:text="${admin.email}">E-mail</td>
+                        <td th:text="${admin.firstName}">First Name</td>
+                        <td th:text="${admin.lastName}">Last Name</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</body>
+</html>

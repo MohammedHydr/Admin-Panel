@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Place Management System</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Place Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/places}">Place Management</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+    <div class="container">
+        <div class="row">
+            <div class= "col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+                <h1 class="text-center">Add new Place</h1>
+                <div class="card-body">
+                    <form th:action="@{/places}" th:object="${addPlace}" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Place Name</label>
+                            <input  class="form-control"
+                                    type = "text"
+                                    name = "name"
+                                    th:field = "${addPlace.name}"
+                                    placeholder = "Enter Place Name"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>City Name</label>
+                            <input  class="form-control"
+                                    type = "text"
+                                    name = "city_name"
+                                    th:field = "${addPlace.city_name}"
+                                    placeholder = "Enter City Name"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Description</label>
+                            <input  class="form-control"
+                                    type = "text"
+                                    name = "description"
+                                    th:field = "${addPlace.description}"
+                                    placeholder = "Enter Place Description"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Longitude</label>
+                            <input  class="form-control"
+                                    type = "number"
+                                    step="any"
+                                    name = "longitude"
+                                    th:field = "${addPlace.longitude}"
+                                    placeholder = "Enter Place Longitude"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Latitude</label>
+                            <input  class="form-control"
+                                    type = "number"
+                                    step="any"
+                                    name = "latitude"
+                                    th:field = "${addPlace.latitude}"
+                                    placeholder = "Enter Place Latitude"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Choose File</label>
+                            <input  class="form-control"
+                                    type = "file"
+                                    name = "file"
+                                    accept="image/png, image/jpeg"
+                                    placeholder = "Enter Image"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <input  class="form-control"
+                                    type = "text"
+                                    name = "category"
+                                    th:field = "${addPlace.category.name}"
+                                    placeholder = "Enter Category"
+                            />
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Place Management System</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Place Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/places}">Place Management</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+    <div class="container">
+        <div class="row">
+            <h1>List Places</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-3">
+                <a th:href="@{places/new}" class="btn btn-primary btn-sm mb-3">Add Place</a>
+            </div>
+        </div>
+        <table class="table table-striped table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Place Id</th>
+                    <th>Place Name</th>
+                    <th>City Name</th>
+                    <th>Place Description</th>
+                    <th>Place Longitude</th>
+                    <th>Place Latitude</th>
+                    <th>Place Image</th>
+                    <th>Place Category</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="place: ${listPlaces}">
+                    <td th:text="${place.place_id}">Place Id</td>
+                    <td th:text="${place.name}">Place Name</td>
+                    <td th:text="${place.city_name}">City Name</td>
+                    <td th:text="${place.description}">Place Description</td>
+                    <td th:text="${place.longitude}">Place Longitude</td>
+                    <td th:text="${place.latitude}">Place Latitude</td>
+                    <td><img th:src="${'data:image/png;charset=utf-8;base64,' + place.byteToString(place.image)}" height="150px" width="150px" alt="img"></td>
+                    <td th:text="${place.category.name}">Place Category</td>
+                    <td>
+                        <a th:href="@{/places/edit/{id}(id=${place.place_id})}" class="btn btn-primary">Update</a>
+                        <a th:href="@{/places/{id}(id=${place.place_id})}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

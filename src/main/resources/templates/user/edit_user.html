@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Management System</title>
+    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">User Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/users}">User Management</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<div class="container">
+    <div class="row">
+        <div class= "col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class="text-center">Update User</h1>
+            <div class="card-body">
+                <form th:action="@{/users/{id} (id=${editUser.id})}" th:object="${editUser}" method="post">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input  class="form-control"
+                                type = "text"
+                                name = "email"
+                                th:field = "${editUser.email}"
+                                placeholder = "Enter User Email"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input  class="form-control"
+                                type = "text"
+                                name = "password"
+                                th:field = "${editUser.password}"
+                                placeholder = "Enter User Password"
+                        />
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
