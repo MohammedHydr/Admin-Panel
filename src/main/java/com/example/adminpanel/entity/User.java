@@ -1,4 +1,4 @@
-package com.example.adminpanel.user;
+package com.example.adminpanel.entity;
 
 import javax.persistence.*;
 

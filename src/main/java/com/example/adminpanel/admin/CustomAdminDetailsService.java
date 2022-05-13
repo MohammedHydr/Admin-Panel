@@ -1,5 +1,7 @@
 package com.example.adminpanel.admin;
 
+import com.example.adminpanel.entity.Admin;
+import com.example.adminpanel.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

@@ -1,5 +1,7 @@
-package com.example.adminpanel.post;
+package com.example.adminpanel.service;
 
+import com.example.adminpanel.entity.Post;
+import com.example.adminpanel.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

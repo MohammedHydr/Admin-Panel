@@ -1,5 +1,7 @@
-package com.example.adminpanel.admin;
+package com.example.adminpanel.controller;
 
+import com.example.adminpanel.entity.Admin;
+import com.example.adminpanel.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;

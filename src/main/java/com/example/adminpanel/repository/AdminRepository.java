@@ -1,5 +1,6 @@
-package com.example.adminpanel.admin;
+package com.example.adminpanel.repository;
 
+import com.example.adminpanel.entity.Admin;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

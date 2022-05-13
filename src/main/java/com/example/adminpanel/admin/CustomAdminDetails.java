@@ -1,6 +1,7 @@
 package com.example.adminpanel.admin;
 
 
+import com.example.adminpanel.entity.Admin;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 

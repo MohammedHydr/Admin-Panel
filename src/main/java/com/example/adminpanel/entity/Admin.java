@@ -1,4 +1,4 @@
-package com.example.adminpanel.admin;
+package com.example.adminpanel.entity;
 
 
 

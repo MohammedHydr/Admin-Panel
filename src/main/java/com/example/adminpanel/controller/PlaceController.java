@@ -1,5 +1,7 @@
-package com.example.adminpanel.place;
+package com.example.adminpanel.controller;
 
+import com.example.adminpanel.entity.Place;
+import com.example.adminpanel.service.PlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 @Controller
 public class PlaceController {

@@ -9,7 +9,6 @@ public class AdminPanelApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AdminPanelApplication.class, args);
-
     }
 
 }

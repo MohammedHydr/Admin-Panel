@@ -1,5 +1,7 @@
-package com.example.adminpanel.category;
+package com.example.adminpanel.service;
 
+import com.example.adminpanel.entity.Category;
+import com.example.adminpanel.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

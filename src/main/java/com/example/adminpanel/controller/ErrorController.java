@@ -1,4 +1,4 @@
-package com.example.adminpanel.admin;
+package com.example.adminpanel.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

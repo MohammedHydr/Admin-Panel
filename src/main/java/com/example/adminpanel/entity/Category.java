@@ -1,10 +1,6 @@
-package com.example.adminpanel.category;
-
-import com.example.adminpanel.place.Place;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+package com.example.adminpanel.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity // make this java class a jpa entity
 @Table(name = "categories") // map this entity to database table

@@ -1,6 +1,6 @@
-package com.example.adminpanel.place;
+package com.example.adminpanel.entity;
 
-import com.example.adminpanel.category.Category;
+import com.example.adminpanel.entity.Category;
 
 import javax.persistence.*;
 import java.util.Base64;

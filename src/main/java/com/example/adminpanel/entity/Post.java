@@ -1,8 +1,5 @@
-package com.example.adminpanel.post;
+package com.example.adminpanel.entity;
 
-
-import com.example.adminpanel.place.Place;
-import com.example.adminpanel.user.User;
 
 import javax.persistence.*;
 import java.util.Base64;
