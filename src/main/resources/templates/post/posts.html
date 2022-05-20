@@ -49,8 +49,8 @@
                     <td th:text="${post.post_id}">Place Id</td>
                     <td th:text="${post.comment}">Post Comment</td>
                     <td><img th:src="${'data:image/png;charset=utf-8;base64,' + post.byteToString(post.image)}" height="150px" width="150px" alt="img"></td>
-                    <td th:text="${post.place.name}">Place</td>
-                    <td th:text="${post.user.id}">User Id</td>
+                    <td th:text="${post.place}">Place</td>
+                    <td th:text="${post.user}">Place</td>
                     <td>
                         <a th:href="@{/posts/edit/{id}(id=${post.post_id})}" class="btn btn-primary">Update</a>
                         <a th:href="@{/posts/{id}(id=${post.post_id})}" class="btn btn-danger">Delete</a>

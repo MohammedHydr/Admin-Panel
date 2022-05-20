@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Post Management System</title>
@@ -31,7 +31,7 @@
             <div class= "col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
                 <h1 class="text-center">Add new Post</h1>
                 <div class="card-body">
-                    <form th:action="@{/posts}" th:object="${addPost}" method="post" enctype="multipart/form-data">
+                    <form th:action="@{/posts}" method="post" th:object="${addPost}" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Choose File</label>
                             <input  class="form-control"
@@ -46,29 +46,31 @@
                             <input  class="form-control"
                                     type = "text"
                                     name = "comment"
-                                    th:field = "${addPost.comment}"
+                                    th:value= "${addPost.comment}"
                                     placeholder = "Add Comment"
                             />
                         </div>
 
                         <div class="form-group">
-                            <label>Place</label>
-                            <input  class="form-control"
-                                    type = "text"
-                                    name = "place"
-                                    th:field = "${addPost.place.name}"
-                                    placeholder = "Place Name"
-                            />
+                            <label> Places
+                                <select th:field="*{place}" class="form-control" type = "text" name = "place">
+                                    <option th:each="place: ${addPlace}"
+                                            th:value="${place.name}"
+                                            th:text="${place.name}">
+                                    </option>
+                                </select>
+                            </label>
                         </div>
 
                         <div class="form-group">
-                            <label>User Id</label>
-                            <input  class="form-control"
-                                    type = "text"
-                                    name = "user"
-                                    th:field = "${addPost.user.id}"
-                                    placeholder = "User Id"
-                            />
+                            <label> User
+                                <select th:field="*{user}" class="form-control" type = "text" name = "user">
+                                    <option th:each="user: ${addUser}"
+                                            th:value="${user.id}"
+                                            th:text="${user.email}">
+                                    </option>
+                                </select>
+                            </label>
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>

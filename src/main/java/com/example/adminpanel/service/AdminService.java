@@ -1,6 +1,7 @@
 package com.example.adminpanel.service;
 
 import com.example.adminpanel.entity.Admin;
+import com.example.adminpanel.exceptions.NoSuchElementFoundException;
 import com.example.adminpanel.repository.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class AdminService {
         this.adminRepository = adminRepository;
     }
 
-    public List<Admin> getAllAdmins(){
+    public List<Admin> getAllAdmins() throws NoSuchElementFoundException {
         return adminRepository.findAll();
     }
 

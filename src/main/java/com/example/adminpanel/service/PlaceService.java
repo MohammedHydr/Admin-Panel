@@ -1,9 +1,11 @@
 package com.example.adminpanel.service;
 
 import com.example.adminpanel.entity.Place;
+import com.example.adminpanel.exceptions.NoSuchElementFoundException;
 import com.example.adminpanel.repository.PlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
@@ -16,7 +18,7 @@ public class PlaceService {
         this.placeRepository = placeRepository;
     }
 
-    public List<Place> getAllPlaces() {
+    public List<Place> getAllPlaces() throws NoSuchElementFoundException {
         return placeRepository.findAll();
     }
 
@@ -35,5 +37,9 @@ public class PlaceService {
     public void deletePlace(Long id){
         placeRepository.deleteById(id);
     }
+
+//    public List<Place> findPlaceByName(String pName){
+//        return placeRepository.findPlaceByName(pName);
+//    }
 
 }

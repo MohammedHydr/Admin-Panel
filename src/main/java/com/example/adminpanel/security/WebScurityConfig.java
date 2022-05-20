@@ -51,12 +51,15 @@ public class WebScurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/admins/*", "/admins", "/categories/*",
                         "/categories", "/users/*", "/users",
-                        "/places/*", "/places", "/posts/*", "/posts,", "/list_admin", "index").authenticated()
+                        "/places/*", "/places",
+                        "/posts/*", "/posts,",
+                        "/list_admin", "/index").authenticated()
                 .anyRequest().permitAll()
                 .and().formLogin()
                 .loginPage("/login")
                 .usernameParameter("email")
                 .permitAll()
+                .defaultSuccessUrl("/index", true)
                 .failureUrl("/login-error")
                 .and()
                 .logout().permitAll();

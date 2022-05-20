@@ -1,7 +1,9 @@
 package com.example.adminpanel.controller;
 
 import com.example.adminpanel.entity.Place;
+import com.example.adminpanel.service.CategoryService;
 import com.example.adminpanel.service.PlaceService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +12,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
+@Slf4j(topic = "PRODUCT_CONTROLLER")
 @Controller
 public class PlaceController {
 
     @Autowired
     private PlaceService placeService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     public PlaceController(PlaceService placeService) {
         this.placeService = placeService;
@@ -32,6 +38,7 @@ public class PlaceController {
     public String createPlaceForm(Model model) {
         // create user object to hold user from data
         Place place = new Place();
+        model.addAttribute("addCategory",categoryService.getAllCategories());
         model.addAttribute("addPlace", place);
         return "place/create_place";
     }

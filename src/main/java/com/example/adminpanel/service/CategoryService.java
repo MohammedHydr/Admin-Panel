@@ -1,6 +1,7 @@
 package com.example.adminpanel.service;
 
 import com.example.adminpanel.entity.Category;
+import com.example.adminpanel.exceptions.NoSuchElementFoundException;
 import com.example.adminpanel.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +18,7 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    public List<Category> getAllCategories(){
+    public List<Category> getAllCategories() throws NoSuchElementFoundException {
         return categoryRepository.findAll();
     }
 

@@ -1,7 +1,10 @@
 package com.example.adminpanel.controller;
 
 import com.example.adminpanel.entity.Post;
+import com.example.adminpanel.service.PlaceService;
 import com.example.adminpanel.service.PostService;
+import com.example.adminpanel.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +13,18 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
+@Slf4j(topic = "PRODUCT_CONTROLLER")
 @Controller
 public class PostController {
 
     @Autowired
     private PostService postService;
+
+    @Autowired
+    private PlaceService placeService;
+
+    @Autowired
+    private UserService userService;
 
     public PostController(PostService postService) {
         this.postService = postService;
@@ -31,6 +41,8 @@ public class PostController {
     public String createPostForm(Model model) {
         // create post object to hold post from data
         Post post = new Post();
+        model.addAttribute("addPlace", placeService.getAllPlaces());
+        model.addAttribute("addUser", userService.getAllUsers());
         model.addAttribute("addPost", post);
         return "post/create_post";
     }
@@ -38,7 +50,6 @@ public class PostController {
     @PostMapping("/posts")
     public String savePost(@ModelAttribute("posts") Post post,
                             @RequestParam("file") MultipartFile file) throws IOException {
-
         byte[] contents = file.getBytes();
         post.setImage(contents);
         postService.savePost(post);

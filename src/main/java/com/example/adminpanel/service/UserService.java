@@ -1,6 +1,7 @@
 package com.example.adminpanel.service;
 
 import com.example.adminpanel.entity.User;
+import com.example.adminpanel.exceptions.NoSuchElementFoundException;
 import com.example.adminpanel.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() throws NoSuchElementFoundException {
         return userRepository.findAll();
     }
 

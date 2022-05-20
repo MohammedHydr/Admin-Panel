@@ -89,13 +89,14 @@
                             />
                         </div>
                         <div class="form-group">
-                            <label>Category</label>
-                            <input  class="form-control"
-                                    type = "text"
-                                    name = "category"
-                                    th:field = "${addPlace.category.name}"
-                                    placeholder = "Enter Category"
-                            />
+                            <label> Category
+                                <select th:field="*{category}" class="form-control" type = "text" name = "category">
+                                    <option th:each="category: ${addCategory}"
+                                            th:value="${category.name}"
+                                            th:text="${category.name}">
+                                    </option>
+                                </select>
+                            </label>
                         </div>
                         <div class="card-footer">
                             <button type="submit" class="btn btn-primary">Submit</button>
