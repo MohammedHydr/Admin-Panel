@@ -67,7 +67,7 @@
                                 <select th:field="*{user}" class="form-control" type = "text" name = "user">
                                     <option th:each="user: ${addUser}"
                                             th:value="${user.id}"
-                                            th:text="${user.email}">
+                                            th:text="${user.trimEmail(user.email)}">
                                     </option>
                                 </select>
                             </label>

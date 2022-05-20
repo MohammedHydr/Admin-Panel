@@ -1,9 +1,10 @@
 package com.example.adminpanel;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cache.CacheManager;
 
+@Slf4j(topic = "PRODUCT_CONTROLLER")
 @SpringBootApplication
 public class AdminPanelApplication {
 

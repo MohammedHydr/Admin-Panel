@@ -26,6 +26,7 @@ public class AdminController {
     public String index(Model model) {
         return "redirect:/login";
     }
+
     // Login form
     @RequestMapping("/login")
     public String login() {
@@ -45,6 +46,7 @@ public class AdminController {
         return "index";
     }
 
+    //register form
     @GetMapping("/register")
     public String showSignUpForm(Model model){
         Admin admin = new Admin();
@@ -52,6 +54,7 @@ public class AdminController {
         return "admin/register";
     }
 
+    // save regigter
     @PostMapping("/register")
     public String processRegistration(Admin admin){
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -61,7 +64,7 @@ public class AdminController {
         adminService.saveAdmin(admin);
         return "admin/login";
     }
-
+    // view admins
     @GetMapping("/list_admin")
     public String viewAdminList(Model model){
         model.addAttribute("listAdmins", adminService.getAllAdmins());

@@ -68,4 +68,10 @@ public class User implements Serializable {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public String trimEmail(String email){
+        int index = email.indexOf('@');
+        email = email.substring(0,index);
+        return email;
+    }
 }
