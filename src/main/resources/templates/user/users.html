@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>User Management System</title>
+    <link rel="icon" href="/../resources/static/img/icon.png" type="image/icon type">
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
 </head>
 <body>
@@ -37,7 +38,8 @@
             <thead class="table-dark">
                 <tr>
                     <th>User Id</th>
-                    <th>User Email</th>
+                    <th>User Name</th>
+                    <th>Email</th>
                     <th>Password</th>
                     <th>Actions</th>
                 </tr>
@@ -45,6 +47,7 @@
             <tbody>
                 <tr th:each="user: ${listUsers}">
                     <td th:text="${user.id}">User Id</td>
+                    <td th:text="${user.userName}">User Name</td>
                     <td th:text="${user.email}">E-mail</td>
                     <td th:text="${user.password}">Password</td>
                     <td>

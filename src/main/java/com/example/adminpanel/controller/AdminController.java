@@ -2,12 +2,14 @@ package com.example.adminpanel.controller;
 
 import com.example.adminpanel.entity.Admin;
 import com.example.adminpanel.service.AdminService;
+import com.example.adminpanel.service.PlaceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -18,12 +20,15 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
+    @Autowired
+    private PlaceService placeService;
+
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
     }
 
     @RequestMapping("/")
-    public String index(Model model) {
+    public String index() {
         return "redirect:/login";
     }
 
@@ -42,7 +47,8 @@ public class AdminController {
 
     // Login form
     @RequestMapping("/index")
-    public String index() {
+    public String index(Model model) {
+        model.addAttribute("listP", placeService.getAllPlaces());
         return "index";
     }
 

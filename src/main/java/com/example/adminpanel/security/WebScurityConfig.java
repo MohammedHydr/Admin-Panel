@@ -49,11 +49,13 @@ public class WebScurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admins/*", "/admins", "/categories/*",
+                .antMatchers(
+                        "/admins/*", "/admins", "/categories/*",
                         "/categories", "/users/*", "/users",
                         "/places/*", "/places",
                         "/posts/*", "/posts,",
-                        "/list_admin", "/index").authenticated()
+                        "/list_admin", "/index"
+                ).authenticated()
                 .anyRequest().permitAll()
                 .and().formLogin()
                 .loginPage("/login")

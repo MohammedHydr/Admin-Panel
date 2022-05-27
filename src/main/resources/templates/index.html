@@ -2,7 +2,42 @@
 
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <script th:inline="javascript">
+        /*<![CDATA[*/
+        function initMap() {
+            var places = [[${listP}]];
+            var locations = [];
+            var place = {};
+            for (var i = 0; i < places.length; i++) {
+                place = places[i];
+                locations.push([place["name"], place["latitude"], place["longitude"], place["description"]]);
+            }
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 12,
+                center: new google.maps.LatLng(33.8890671878, 35.4724556208),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
 
+            var infowindow = new google.maps.InfoWindow();
+
+            var marker, i;
+
+            for (i = 0; i < locations.length; i++) {
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                    map: map
+                });
+
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
+                        infowindow.setContent(locations[i][0] + ": " + locations[i][3]);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+            }
+        }
+        window.initMap = initMap;
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,6 +45,7 @@
     <meta name="author" content="">
     <base href="/">
     <title>Trip Advisor Admin Panel</title>
+    <link rel="icon" href="src/main/resources/static/img/icon.png" type="image/icon type">
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
     <!-- Custom fonts for this template-->
     <link href="/../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,6 +55,8 @@
 
     <!-- Custom styles for this template-->
     <link href="/../css/sb-admin-2.min.css" rel="stylesheet">
+<!--    <script type="module" src="/static/index.js"></script>-->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 </head>
 
@@ -174,6 +212,10 @@
                     </ul>
                 </div>
             </nav>
+            <div id="map" style="width: 100%; height: 600px"></div>
+            <script async
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHoxP3WTX51r_Zywwwwd90EwNCfLlDTrc&region=LB&callback=initMap">
+            </script>
         </div>
         <!-- End of Main Content -->
 
@@ -236,5 +278,4 @@
 <script src="/../js/demo/chart-pie-demo.js"></script>
 
 </body>
-
 </html>

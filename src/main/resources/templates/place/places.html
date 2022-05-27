@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Place Management System</title>
+    <link rel="icon" href="/../resources/static/img/icon.png" type="image/icon type">
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
 </head>
 <body>
+
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
     <a class="navbar-brand" href="#">Place Management System</a>
@@ -24,7 +26,7 @@
         </ul>
     </div>
 </nav>
-    <div class="container">
+<div class="container" >
         <div class="row">
             <h1>List Places</h1>
         </div>
@@ -33,7 +35,13 @@
                 <a th:href="@{places/new}" class="btn btn-primary btn-sm mb-3">Add Place</a>
             </div>
         </div>
-        <table class="table table-striped table-bordered">
+<!--        <form th:action="@{/place/search}" method="GET">-->
+<!--            <input type="text" name="keyword" th:value="${keyword}"  placeholder="Find by Name" size="50" >-->
+<!--            <button type="submit" class="btn btn-info" >Search</button>-->
+<!--            <button type="submit" class="btn btn-info" >Reset</button>-->
+<!--        </form>-->
+
+        <table class="table table-striped table-bordered" >
             <thead class="table-dark">
                 <tr>
                     <th>Place Id</th>
@@ -48,7 +56,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="place: ${listPlaces}">
+                <tr  th:each="place: ${listPlaces}" >
                     <td th:text="${place.place_id}">Place Id</td>
                     <td th:text="${place.name}">Place Name</td>
                     <td th:text="${place.city_name}">City Name</td>

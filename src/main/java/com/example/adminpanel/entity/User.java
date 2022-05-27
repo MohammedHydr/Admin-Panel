@@ -11,11 +11,23 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // provides for the specification of generation strategies for the values of primary keys
     private Long id;
 
+    @Column(nullable = false, unique = true)
+    private String userName;
+
     @Column(nullable = false, unique = true) // is used for Adding the column the name in the table of a particular MySQL database unique and not null
     private String email;
 
     @Column(nullable = false)
     private String password;
+
+    public User() {
+    }
+
+    public User(String userName, String email, String password) {
+        this.userName = userName;
+        this.email = email;
+        this.password = password;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -24,25 +36,27 @@ public class User implements Serializable {
 
         User user = (User) o;
 
-        if (!Objects.equals(id, user.id)) return false;
-        if (!Objects.equals(email, user.email)) return false;
-        return Objects.equals(password, user.password);
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
+        if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        return password != null ? password.equals(user.password) : user.password == null;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (userName != null ? userName.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (password != null ? password.hashCode() : 0);
         return result;
     }
 
-    public User() {
+    public String getUserName() {
+        return userName;
     }
 
-    public User(String email, String password) {
-        this.email = email;
-        this.password = password;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Long getId() {
@@ -69,9 +83,10 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public String trimEmail(String email){
-        int index = email.indexOf('@');
-        email = email.substring(0,index);
-        return email;
-    }
+//    public String trimEmail(String email){
+//        int index = email.indexOf('@');
+//        email = email.substring(0,index);
+//        return email;
+//    }
+
 }

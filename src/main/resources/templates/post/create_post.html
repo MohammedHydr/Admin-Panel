@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Post Management System</title>
+    <link rel="icon" href="/../resources/static/img/icon.png" type="image/icon type">
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
 </head>
 <body>
@@ -67,7 +68,7 @@
                                 <select th:field="*{user}" class="form-control" type = "text" name = "user">
                                     <option th:each="user: ${addUser}"
                                             th:value="${user.id}"
-                                            th:text="${user.trimEmail(user.email)}">
+                                            th:text="${user.userName}">
                                     </option>
                                 </select>
                             </label>

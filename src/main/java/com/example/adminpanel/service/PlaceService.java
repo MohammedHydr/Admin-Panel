@@ -38,6 +38,10 @@ public class PlaceService {
         placeRepository.deleteById(id);
     }
 
+//    public List<Place> getByKeyword(String keyword) {
+//        return placeRepository.findByKeyword(keyword);
+//    }
+
 //    public List<Place> findPlaceByName(String pName){
 //        return placeRepository.findPlaceByName(pName);
 //    }

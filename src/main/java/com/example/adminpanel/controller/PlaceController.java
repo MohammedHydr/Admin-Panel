@@ -10,7 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @Slf4j(topic = "PRODUCT_CONTROLLER")
 @Controller
@@ -28,10 +30,10 @@ public class PlaceController {
 
     // handler method to handle list places amd return model and view
     @GetMapping("/places")
-    public String listPlaces(Model model) {
+    public String listPlaces(Model model, HttpSession session) {
         //keys and values , access this key using thymeleaf syntax ${listPlaces}
         model.addAttribute("listPlaces", placeService.getAllPlaces());
-        return "place/places"; // name of the html file
+        return "place/places";
     }
 
     @GetMapping("/places/new")
@@ -56,13 +58,13 @@ public class PlaceController {
     @GetMapping("/places/edit/{id}")
     public String editPlaceForm(@PathVariable Long id, Model model) {
         model.addAttribute("editPlace", placeService.getPlaceById(id));
+        model.addAttribute("addCategory",categoryService.getAllCategories());
         return "place/edit_place";
     }
 
     @PostMapping("/places/{id}")
     public String updatePlace(@PathVariable Long id, @ModelAttribute("updatePlace") Place place,
-                              @RequestParam("file") MultipartFile file) throws IOException {
-        //get place from database by id
+                              @RequestParam("file") MultipartFile file) throws IOException{
         Place existingPlace = placeService.getPlaceById(id);
         existingPlace.setPlace_id(id);
         existingPlace.setName(place.getName());
@@ -111,4 +113,17 @@ public class PlaceController {
 //    response.getOutputStream().write(place.getImage());
 //    response.getOutputStream().close();
 // }
+//    @GetMapping(path = {"/places/search/"})
+//    public String home(Place place, Model model, String keyword) {
+//        if(keyword!=null) {
+//            List<Place> list = placeService.getByKeyword(keyword);
+//            model.addAttribute("list", list);
+//        }
+//        else {
+//            List<Place> list = placeService.getAllPlaces();
+//            model.addAttribute("list", list);
+//        }
+//        return "place/places";
+//
+//    }
 }

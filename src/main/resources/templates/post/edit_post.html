@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Post Management System</title>
+    <link rel="icon" href="/../resources/static/img/icon.png" type="image/icon type">
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
 </head>
 <body>
@@ -53,23 +54,25 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Place</label>
-                        <input  class="form-control"
-                                type = "text"
-                                name = "place"
-                                th:field = "${editPost.place.name}"
-                                placeholder = "Place Name"
-                        />
+                        <label> Places
+                            <select th:field="*{place}" class="form-control" type = "text" name = "place">
+                                <option th:each="place: ${addPlace}"
+                                        th:value="${place.name}"
+                                        th:text="${place.name}">
+                                </option>
+                            </select>
+                        </label>
                     </div>
 
                     <div class="form-group">
-                        <label>User Id</label>
-                        <input  class="form-control"
-                                type = "text"
-                                name = "user"
-                                th:field = "${editPost.user.id}"
-                                placeholder = "User Id"
-                        />
+                        <label> User
+                            <select th:field="*{user}" class="form-control" type = "text" name = "user">
+                                <option th:each="user: ${addUser}"
+                                        th:value="${user.id}"
+                                        th:text="${user.userName}">
+                                </option>
+                            </select>
+                        </label>
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary">Submit</button>

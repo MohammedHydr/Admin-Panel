@@ -59,6 +59,8 @@ public class PostController {
     @GetMapping("/posts/edit/{id}")
     public String editPostForm(@PathVariable Long id, Model model) {
         model.addAttribute("editPost", postService.getPostById(id));
+        model.addAttribute("addPlace", placeService.getAllPlaces());
+        model.addAttribute("addUser", userService.getAllUsers());
         return "post/edit_post";
     }
 
@@ -82,4 +84,5 @@ public class PostController {
         postService.deletePost(id);
         return "redirect:/posts";
     }
+
 }

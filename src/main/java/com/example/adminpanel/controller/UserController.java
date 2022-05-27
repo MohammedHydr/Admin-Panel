@@ -56,6 +56,7 @@ public class UserController {
         //get user from database by id
         User existingUser = userService.getUserById(id);
         existingUser.setId(id);
+        existingUser.setUserName(user.getUserName());
         existingUser.setEmail(user.getEmail());
         existingUser.setPassword(user.getPassword());
 
@@ -70,4 +71,5 @@ public class UserController {
         userService.deleteUserById(id);
         return "redirect:/users";
     }
+
 }
