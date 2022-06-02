@@ -1,22 +1,40 @@
 package com.example.adminpanel.android;
 
+import com.example.adminpanel.entity.Category;
 import com.example.adminpanel.entity.User;
+import com.example.adminpanel.service.CategoryService;
 import com.example.adminpanel.service.UserService;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Slf4j(topic = "PRODUCT_CONTROLLER")
 @RestController
 public class AndroidController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/user/get-all")
+    @Autowired
+    private CategoryService categoryService;
+
+
+    @RequestMapping(value = "/api/users/getUser", method = RequestMethod.POST)
+    public User getUser(@RequestBody User user){
+        return userService.getUser(user);
+    }
+
+    @RequestMapping(value = "/api/users/saveUser", method = RequestMethod.POST)
+    public void save(@RequestBody User user){
+         userService.saveUser(user);
+    }
+
+    @RequestMapping(value = "/api/users/getAllUsers", method = RequestMethod.GET)
     public List<User> getAllUsers(){
         return userService.getAllUsers();
+    }
+
+    @RequestMapping(value = "/api/users/getAllCategories", method = RequestMethod.GET)
+    public List<Category> getAllCategories(){
+        return categoryService.getAllCategories();
     }
 }

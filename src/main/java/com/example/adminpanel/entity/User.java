@@ -1,5 +1,7 @@
 package com.example.adminpanel.entity;
 
+import com.fasterxml.jackson.annotation.JsonValue;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -25,6 +27,11 @@ public class User implements Serializable {
 
     public User(String userName, String email, String password) {
         this.userName = userName;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(String email, String password) {
         this.email = email;
         this.password = password;
     }

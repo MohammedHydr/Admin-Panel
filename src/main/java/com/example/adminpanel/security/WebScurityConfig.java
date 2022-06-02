@@ -48,7 +48,7 @@ public class WebScurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf().disable().authorizeRequests()
                 .antMatchers(
                         "/admins/*", "/admins", "/categories/*",
                         "/categories", "/users/*", "/users",
