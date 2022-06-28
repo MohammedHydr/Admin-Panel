@@ -13,7 +13,7 @@
                 locations.push([place["name"], place["latitude"], place["longitude"], place["description"]]);
             }
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 12,
+                zoom: 9,
                 center: new google.maps.LatLng(33.8890671878, 35.4724556208),
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             });
@@ -45,7 +45,7 @@
     <meta name="author" content="">
     <base href="/">
     <title>Trip Advisor Admin Panel</title>
-    <link rel="icon" href="src/main/resources/static/img/icon.png" type="image/icon type">
+    <link rel="icon" href="/../resources/static/img/icon.png" type="image/icon">
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
     <!-- Custom fonts for this template-->
     <link href="/../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -212,7 +212,7 @@
                     </ul>
                 </div>
             </nav>
-            <div id="map" style="width: 100%; height: 600px"></div>
+            <div id="map" style="width: 100%; height: 750px"></div>
             <script async
                     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHoxP3WTX51r_Zywwwwd90EwNCfLlDTrc&region=LB&callback=initMap">
             </script>

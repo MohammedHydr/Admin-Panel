@@ -1,8 +1,10 @@
 package com.example.adminpanel.android;
 
 import com.example.adminpanel.entity.Category;
+import com.example.adminpanel.entity.Place;
 import com.example.adminpanel.entity.User;
 import com.example.adminpanel.service.CategoryService;
+import com.example.adminpanel.service.PlaceService;
 import com.example.adminpanel.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,9 @@ public class AndroidController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private PlaceService placeService;
+    //TODO secure the api
 
     @RequestMapping(value = "/api/users/getUser", method = RequestMethod.POST)
     public User getUser(@RequestBody User user){
@@ -33,8 +38,22 @@ public class AndroidController {
         return userService.getAllUsers();
     }
 
-    @RequestMapping(value = "/api/users/getAllCategories", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/categories/getAllCategories", method = RequestMethod.GET)
     public List<Category> getAllCategories(){
         return categoryService.getAllCategories();
     }
+
+    @RequestMapping(value = "/api/places/getAllPlaces", method = RequestMethod.GET)
+    public List<Place> getAllPlaces(){
+        return placeService.getAllPlaces();
+    }
+
+    @RequestMapping(value = "/api/places/getTopPlaces", method = RequestMethod.GET)
+    public List<Place> getTopPlaces(){
+        return placeService.getTopPlaces();
+    }
+
+    //TODO Add username and image to user
+    // make home link buttons in the entities in the panel
+
 }

@@ -38,6 +38,9 @@ public class PlaceService {
         placeRepository.deleteById(id);
     }
 
+    public List<Place> getTopPlaces(){
+        return placeRepository.findTopPlaces();
+    }
 //    public List<Place> getByKeyword(String keyword) {
 //        return placeRepository.findByKeyword(keyword);
 //    }

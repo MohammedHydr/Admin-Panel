@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Place Management System</title>
-    <link rel="icon" href="/../resources/static/img/icon.png" type="image/icon type">
+    <link rel="icon" href="/../resources/static/img/icon.png" type="image/icon">
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
 </head>
 <body>
@@ -21,7 +21,27 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/places}">Place Management</a>
+                <a class="nav-link" th:href="@{/index}">Home</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/list_admin}">Admins Management</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/users}">User Management</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/categories}">Categories Management</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/posts}">Post Management</a>
             </li>
         </ul>
     </div>

@@ -68,6 +68,12 @@ public class Place implements Serializable {
     public Place() {
     }
 
+    public Place(String name, String city_name, String description) {
+        this.name = name;
+        this.city_name = city_name;
+        this.description = description;
+    }
+
     public Place(String name, String city_name, String description, Double longitude, Double latitude, byte[] image, String category) {
         this.name = name;
         this.city_name = city_name;

@@ -14,4 +14,7 @@ public interface PlaceRepository extends JpaRepository<Place, Long> {
 
 //@Query(value = "select * from places s where s.name like %:keyword%", nativeQuery = true)
 //List<Place> findByKeyword(@Param("keyword") String keyword);
+
+    @Query(value = "select u from Place u where u.place_id < 6")
+    List<Place> findTopPlaces();
 }

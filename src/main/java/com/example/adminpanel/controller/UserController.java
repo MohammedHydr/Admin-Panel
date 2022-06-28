@@ -38,9 +38,9 @@ public class UserController {
 
     @PostMapping("/users")
     public String saveUser(@ModelAttribute("users") User user){
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); //encode the password
-        String encodedPassword = encoder.encode(user.getPassword());
-        user.setPassword(encodedPassword);
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(); //encode the password
+//        String encodedPassword = encoder.encode(user.getPassword());
+//        user.setPassword(encodedPassword);
         userService.saveUser(user);
         return "redirect:/users";
     }
@@ -53,7 +53,6 @@ public class UserController {
 
     @PostMapping("/users/{id}")
     public String updateUser(@PathVariable Long id, @ModelAttribute("updateUser") User user){
-        //get user from database by id
         User existingUser = userService.getUserById(id);
         existingUser.setId(id);
         existingUser.setUserName(user.getUserName());
